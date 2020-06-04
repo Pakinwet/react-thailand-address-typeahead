@@ -1,0 +1,7 @@
+node_modules
+npm-debug.*
+.out
+jquery.Thailand.js
+__test__
+dist/__test__
+.storybook
