@@ -9,6 +9,9 @@ type TypeaheadInputType = {
     value: string;
     options: any[];
     filterOptions: string;
+    labelName: string;
+    isMaterialStyle: bool;
+    isRequired: bool;
     onChange: (e: any) => void;
     onOptionSelected: (option: any) => void;
 
@@ -31,12 +34,21 @@ const Typeahead: React.Component<TypeaheadInputType> = compose(
       onFocus={() => props.setOpen(true)}
       type="text" value={props.value}
       onChange={props.onChange}
+      required={props.isRequired}
     />
     { props.options.length && props.value.length ? <input
       onChange={() => null}
       value={props.options[0][props.filterOption]}
       type="text" className="typeahead-input-hint"
     /> : null }
+
+    { props.isMaterialStyle == true && 
+      <div>
+      <i className="bar"></i>
+      <label className="label">{props.labelName}</label>
+      </div>
+    }
+   
 
     {props.open && props.options.length && props.value.length ? <ul className="typeahead-selector" >
       {props.options

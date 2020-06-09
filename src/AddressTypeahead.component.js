@@ -13,12 +13,15 @@ type AddressInputType = {
 
   // external props
   fieldType: string;
+  labelName: string;
+  isMaterialStyle: bool;
+  isRequired: bool;
   value: string;
   onOptionSelected: (option: any) => void;
   renderResult: (data: any) => React.Component;
 }
 const AddressTypeaheadComponent = (props: AddressInputType) => {
-  const { searchStr, setSearchStr, fieldType, options } = props;
+  const { searchStr, setSearchStr, fieldType, labelName, isMaterialStyle, isRequired, options } = props;
   if (!fieldType) {
     console.warn('No field type provide');
     return <div />;
@@ -27,6 +30,9 @@ const AddressTypeaheadComponent = (props: AddressInputType) => {
     <Typeahead
       displayOption={props.renderResult}
       filterOption={fieldType}
+      labelName={labelName}
+      isRequired={isRequired}
+      isMaterialStyle={isMaterialStyle}
       options={options}
       maxVisible={5}
       value={searchStr}

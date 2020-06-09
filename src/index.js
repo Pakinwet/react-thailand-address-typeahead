@@ -14,6 +14,8 @@ type AddressFormInputPropType = {
     amphoeLabel: string;
     provinceLabel: string;
     zipcodeLabel: string;
+    isMaterialStyle: bool;
+    isRequired: bool;
     onAddressSelected: (addresObject) => void;
     renderResult: (data) => React.Component;
 }
@@ -36,6 +38,8 @@ class AddressForm extends React.Component {
       {
         Object.keys(fieldsEnum).map((key) => {
           let name;
+          const isMaterialStyle = this.props.isMaterialStyle || false;
+          const isRequired = this.props.isRequired || false;
           switch (fieldsEnum[key]) {
             case 'd': name = this.props.districtLabel || 'ตำบล'; break;
             case 'a': name = this.props.amphoeLabel || 'อำเภอ'; break;
@@ -45,7 +49,9 @@ class AddressForm extends React.Component {
           }
           return (
             <div key={key} className="typeahead-address-container">
-              <label className="typeahead-address-label" htmlFor="district">{name}</label>
+              {!isMaterialStyle &&
+                <label className="typeahead-address-label" htmlFor="district">{name}</label>
+              }
               <AddressTypeahead
                 renderResult={this.props.renderResult}
                 onOptionSelected={(result) => {
@@ -54,6 +60,9 @@ class AddressForm extends React.Component {
                 }}
                 value={addressObj ? addressObj[fieldsEnum[key]] : ''}
                 fieldType={fieldsEnum[key]}
+                labelName={name}
+                isMaterialStyle={isMaterialStyle}
+                isRequired={isRequired}
               />
             </div>
           );
