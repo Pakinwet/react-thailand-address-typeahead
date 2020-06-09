@@ -22,6 +22,9 @@ var AddressTypeaheadComponent = function AddressTypeaheadComponent(props) {
   var searchStr = props.searchStr,
       setSearchStr = props.setSearchStr,
       fieldType = props.fieldType,
+      labelName = props.labelName,
+      isMaterialStyle = props.isMaterialStyle,
+      isRequired = props.isRequired,
       options = props.options;
 
   if (!fieldType) {
@@ -31,6 +34,9 @@ var AddressTypeaheadComponent = function AddressTypeaheadComponent(props) {
   return _react2.default.createElement(_Typeahead2.default, {
     displayOption: props.renderResult,
     filterOption: fieldType,
+    labelName: labelName,
+    isRequired: isRequired,
+    isMaterialStyle: isMaterialStyle,
     options: options,
     maxVisible: 5,
     value: searchStr,

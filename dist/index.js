@@ -56,6 +56,8 @@ var AddressForm = function (_React$Component) {
         null,
         Object.keys(_finder.fieldsEnum).map(function (key) {
           var name = void 0;
+          var isMaterialStyle = _this2.props.isMaterialStyle || false;
+          var isRequired = _this2.props.isRequired || false;
           switch (_finder.fieldsEnum[key]) {
             case 'd':
               name = _this2.props.districtLabel || 'ตำบล';break;
@@ -71,7 +73,7 @@ var AddressForm = function (_React$Component) {
           return _react2.default.createElement(
             'div',
             { key: key, className: 'typeahead-address-container' },
-            _react2.default.createElement(
+            !isMaterialStyle && _react2.default.createElement(
               'label',
               { className: 'typeahead-address-label', htmlFor: 'district' },
               name
@@ -83,7 +85,10 @@ var AddressForm = function (_React$Component) {
                 _this2.props.onAddressSelected(result);
               },
               value: addressObj ? addressObj[_finder.fieldsEnum[key]] : '',
-              fieldType: _finder.fieldsEnum[key]
+              fieldType: _finder.fieldsEnum[key],
+              labelName: name,
+              isMaterialStyle: isMaterialStyle,
+              isRequired: isRequired
             })
           );
         })
