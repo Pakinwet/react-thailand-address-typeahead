@@ -30,7 +30,8 @@ var Typeahead = (0, _recompose.compose)((0, _recompose.defaultProps)({
         return props.setOpen(true);
       },
       type: 'text', value: props.value,
-      onChange: props.onChange
+      onChange: props.onChange,
+      required: props.isRequired
     }),
     props.options.length && props.value.length ? _react2.default.createElement('input', {
       onChange: function onChange() {
@@ -39,6 +40,16 @@ var Typeahead = (0, _recompose.compose)((0, _recompose.defaultProps)({
       value: props.options[0][props.filterOption],
       type: 'text', className: 'typeahead-input-hint'
     }) : null,
+    props.isMaterialStyle == true && _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement('i', { className: 'bar' }),
+      _react2.default.createElement(
+        'label',
+        { className: 'label' },
+        props.labelName
+      )
+    ),
     props.open && props.options.length && props.value.length ? _react2.default.createElement(
       'ul',
       { className: 'typeahead-selector' },
