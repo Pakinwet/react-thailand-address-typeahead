@@ -14,6 +14,8 @@ storiesOf('Component', module)
         amphoeLabel={'อำเภอ'}
         provinceLabel={'จังหวัด'}
         zipcodeLabel={'รหัสไปรษณีย์'}
+        isMaterialStyle={true}
+        isRequired={true}
       />
       <code>{'<AddressForm onAddressSelected={action(\'onSelectedAdress\')} />'}</code>
     </div>
