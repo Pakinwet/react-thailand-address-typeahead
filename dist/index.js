@@ -80,6 +80,7 @@ var AddressForm = function (_React$Component) {
             ),
             _react2.default.createElement(_AddressTypeahead2.default, {
               renderResult: _this2.props.renderResult,
+              onReference: _this2.props.onReference,
               onOptionSelected: function onOptionSelected(result) {
                 _this2.setAddressObj(result);
                 _this2.props.onAddressSelected(result);

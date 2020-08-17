@@ -63,8 +63,8 @@ const AddressTypeahead: Component<AddressInputType> = compose(
     },
     componentDidUpdate(){
       this.props.onReference({
-          key: this.props.fieldType,
-          value: this.props.searchStr,
+          'key': this.props.fieldType,
+          'value': this.props.searchStr,
       });
     }
   }),

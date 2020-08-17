@@ -25,12 +25,14 @@ var AddressTypeaheadComponent = function AddressTypeaheadComponent(props) {
       labelName = props.labelName,
       isMaterialStyle = props.isMaterialStyle,
       isRequired = props.isRequired,
-      options = props.options;
+      options = props.options,
+      onReference = props.onReference;
 
   if (!fieldType) {
     console.warn('No field type provide');
     return _react2.default.createElement('div', null);
   }
+
   return _react2.default.createElement(_Typeahead2.default, {
     displayOption: props.renderResult,
     filterOption: fieldType,
@@ -54,6 +56,12 @@ var AddressTypeahead = (0, _recompose.compose)((0, _recompose.withState)('search
     if (nextProps.value !== this.props.value) {
       this.props.setSearchStr(nextProps.value);
     }
+  },
+  componentDidUpdate: function componentDidUpdate() {
+    this.props.onReference({
+      'key': this.props.fieldType,
+      'value': this.props.searchStr
+    });
   }
 }), (0, _recompose.withProps)(function (_ref) {
   var searchStr = _ref.searchStr,
