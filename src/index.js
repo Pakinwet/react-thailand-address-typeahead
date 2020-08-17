@@ -5,20 +5,21 @@ import AddressTypeahead from './AddressTypeahead.component';
 
 type AddressFormInputPropType = {
     values: {
-        a: string;
-        d: string;
-        p: string;
-        z: string;
-    };
-    districtLabel: string;
-    amphoeLabel: string;
-    provinceLabel: string;
-    zipcodeLabel: string;
-    isMaterialStyle: bool;
-    isRequired: bool;
-    onAddressSelected: (addresObject) => void;
-    renderResult: (data) => React.Component;
-}
+        a: string,
+        d: string,
+        p: string,
+        z: string,
+    },
+    districtLabel: string,
+    amphoeLabel: string,
+    provinceLabel: string,
+    zipcodeLabel: string,
+    isMaterialStyle: boolean,
+    isRequired: boolean,
+    onAddressSelected: (addresObject) => void,
+    onReference: (refObject) => void,
+    renderResult: (data) => React.Component,
+};
 class AddressForm extends React.Component {
   constructor(props) {
     super(props);

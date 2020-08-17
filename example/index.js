@@ -5,34 +5,49 @@ import AddressForm from '../src/index';
 
 import '../src/styles.css';
 
-storiesOf('Component', module)
-  .add('montage', () => (
-    <div style={{ width: 350 }}>
-      <AddressForm 
-        onAddressSelected={action('onSelectedAdress')} 
-        districtLabel={'ตำบล'} 
-        amphoeLabel={'อำเภอ'}
-        provinceLabel={'จังหวัด'}
-        zipcodeLabel={'รหัสไปรษณีย์'}
-        isMaterialStyle={true}
-        isRequired={true}
-      />
-      <code>{'<AddressForm onAddressSelected={action(\'onSelectedAdress\')} />'}</code>
-    </div>
-  ))
-  .add('handle result', () => {
-    const WithStateComponent = withState('result', 'setResult', null)(({ result, setResult }) => (
-      <div style={{ width: 350 }}>
-        <div>
-          selected : {result ? `${result.p} ${result.a} ${result.d} ${result.z}` : null}
+storiesOf("Component", module)
+    .add("montage", () => (
+        <div style={{ width: 350 }}>
+            <AddressForm
+                onAddressSelected={action("onSelectedAdress")}
+                districtLabel={"ตำบล"}
+                amphoeLabel={"อำเภอ"}
+                provinceLabel={"จังหวัด"}
+                zipcodeLabel={"รหัสไปรษณีย์"}
+                isMaterialStyle={true}
+                isRequired={true}
+                onReference={action("onReference")}
+            />
+            <code>
+                {
+                    "<AddressForm onAddressSelected={action('onSelectedAdress')} />"
+                }
+            </code>
         </div>
-        <AddressForm onAddressSelected={address => setResult(address)} />
-      </div>
-      ));
-    return (<div>
-      <WithStateComponent />
-      <code>
-        {`
+    ))
+    .add("handle result", () => {
+        const WithStateComponent = withState(
+            "result",
+            "setResult",
+            null
+        )(({ result, setResult }) => (
+            <div style={{ width: 350 }}>
+                <div>
+                    selected :{" "}
+                    {result
+                        ? `${result.p} ${result.a} ${result.d} ${result.z}`
+                        : null}
+                </div>
+                <AddressForm
+                    onAddressSelected={(address) => setResult(address)}
+                />
+            </div>
+        ));
+        return (
+            <div>
+                <WithStateComponent />
+                <code>
+                    {`
          <div style={{ width: 350 }}>
           <div>
             selected : {result ? \`\${result.p} \${result.a} \${result.d} \${result.z}\` : null}
@@ -40,15 +55,18 @@ storiesOf('Component', module)
           <AddressForm onAddressSelected={address => setResult(address)} />
         </div>
         `}
-      </code>
-    </div>);
-  })
-  .add('custom render result', () => (
-    <div style={{ width: 400 }}>
-      <AddressForm
-        renderResult={data => <b>{`Hi ${data.p}:${data.d} ${data.a}`}</b>}
-        onAddressSelected={action('onSelectedAdress')}
-      />
-    </div>
-  ));
+                </code>
+            </div>
+        );
+    })
+    .add("custom render result", () => (
+        <div style={{ width: 400 }}>
+            <AddressForm
+                renderResult={(data) => (
+                    <b>{`Hi ${data.p}:${data.d} ${data.a}`}</b>
+                )}
+                onAddressSelected={action("onSelectedAdress")}
+            />
+        </div>
+    ));
 

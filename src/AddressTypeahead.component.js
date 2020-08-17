@@ -7,38 +7,49 @@ import { resolveResultbyField } from './finder';
 
 
 type AddressInputType = {
-  // local state
-  searchStr: string;
-  option: string[];
+    // local state
+    searchStr: string,
+    option: string[],
 
-  // external props
-  fieldType: string;
-  labelName: string;
-  isMaterialStyle: bool;
-  isRequired: bool;
-  value: string;
-  onOptionSelected: (option: any) => void;
-  renderResult: (data: any) => React.Component;
-}
+    // external props
+    fieldType: string,
+    labelName: string,
+    isMaterialStyle: boolean,
+    isRequired: boolean,
+    value: string,
+    onOptionSelected: (option: any) => void,
+    onReference: (option: any) => void,
+    renderResult: (data: any) => React.Component,
+};
 const AddressTypeaheadComponent = (props: AddressInputType) => {
-  const { searchStr, setSearchStr, fieldType, labelName, isMaterialStyle, isRequired, options } = props;
+  const {
+      searchStr,
+      setSearchStr,
+      fieldType,
+      labelName,
+      isMaterialStyle,
+      isRequired,
+      options,
+      onReference,
+  } = props;
   if (!fieldType) {
     console.warn('No field type provide');
     return <div />;
   }
   return (
-    <Typeahead
-      displayOption={props.renderResult}
-      filterOption={fieldType}
-      labelName={labelName}
-      isRequired={isRequired}
-      isMaterialStyle={isMaterialStyle}
-      options={options}
-      maxVisible={5}
-      value={searchStr}
-      onChange={e => setSearchStr(e.target.value)}
-      onOptionSelected={option => props.onOptionSelected(option)}
-    />
+      <Typeahead
+          displayOption={props.renderResult}
+          filterOption={fieldType}
+          labelName={labelName}
+          isRequired={isRequired}
+          isMaterialStyle={isMaterialStyle}
+          options={options}
+          maxVisible={5}
+          value={searchStr}
+          onChange={(e) => setSearchStr(e.target.value)}
+          onOptionSelected={(option) => props.onOptionSelected(option)}
+          onReference={onReference}
+      />
   );
 };
 
