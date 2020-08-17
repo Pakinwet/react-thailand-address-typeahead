@@ -16,7 +16,7 @@ storiesOf("Component", module)
                 zipcodeLabel={"รหัสไปรษณีย์"}
                 isMaterialStyle={true}
                 isRequired={true}
-                onReference={action("onReference")}
+                onReference={(val) =>{console.log(val) }}
             />
             <code>
                 {

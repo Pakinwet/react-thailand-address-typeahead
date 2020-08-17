@@ -60,13 +60,13 @@ const AddressTypeahead: Component<AddressInputType> = compose(
       if (nextProps.value !== this.props.value) {
         this.props.setSearchStr(nextProps.value);
       }
-
+    },
+    componentDidUpdate(){
       this.props.onReference({
           key: this.props.fieldType,
           value: this.props.searchStr,
       });
-
-    },
+    }
   }),
   withProps(({ searchStr, fieldType }) => ({
     options: resolveResultbyField(fieldType, searchStr),
