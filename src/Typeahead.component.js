@@ -14,7 +14,6 @@ type TypeaheadInputType = {
     isRequired: boolean,
     onChange: (e: any) => void,
     onOptionSelected: (option: any) => void,
-    onReference: (option: any) => void,
 
     // local props
     open: boolean,
@@ -38,7 +37,6 @@ const Typeahead: React.Component<TypeaheadInputType> = compose(
             onChange={props.onChange}
             required={props.isRequired}
             name={props.filterOption}
-            ref={props.onReference}
         />
         {props.options.length && props.value.length ? (
             <input

@@ -36,6 +36,7 @@ const AddressTypeaheadComponent = (props: AddressInputType) => {
     console.warn('No field type provide');
     return <div />;
   }
+
   return (
       <Typeahead
           displayOption={props.renderResult}
@@ -48,7 +49,6 @@ const AddressTypeaheadComponent = (props: AddressInputType) => {
           value={searchStr}
           onChange={(e) => setSearchStr(e.target.value)}
           onOptionSelected={(option) => props.onOptionSelected(option)}
-          onReference={onReference}
       />
   );
 };
@@ -60,6 +60,12 @@ const AddressTypeahead: Component<AddressInputType> = compose(
       if (nextProps.value !== this.props.value) {
         this.props.setSearchStr(nextProps.value);
       }
+
+      this.props.onReference({
+          key: this.props.fieldType,
+          value: this.props.searchStr,
+      });
+
     },
   }),
   withProps(({ searchStr, fieldType }) => ({
