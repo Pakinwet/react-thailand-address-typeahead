@@ -55,6 +55,7 @@ class AddressForm extends React.Component {
               }
               <AddressTypeahead
                 renderResult={this.props.renderResult}
+                onReference={this.props.onReference}
                 onOptionSelected={(result) => {
                   this.setAddressObj(result);
                   this.props.onAddressSelected(result);
